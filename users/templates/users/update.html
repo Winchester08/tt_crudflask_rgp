@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Window</title>
+</head>
+<body>
+    <h2>
+        {{hello}}
+    </h2>
+    <fieldset>
+        <legend>Data for User</legend>
+    <form action="/update_action/{{info.0}}" method="post">
+        <p>
+        <label for="">User Name:</label>
+        <input type="text" name="name_user" id="" value="{{info.1}}">
+        </p>
+        <p>
+        <label for="">Last Name</label>
+        <input type="text" name="last_user" id="" value="{{info.2}}">
+        </p>
+        <p>
+        <label for="">User</label>
+        <input type="text" name="user" id="" value="{{info.3}}">
+</p>
+    <p>
+        <label for="">User Type</label>
+       <select name="type_user" >
+<option value="{{info.5}}">{{info.5}}</option>
+<option value="guest">guest</option>
+<option value="administrator">administrator</option>
+<option value="sales">sales</option>
+
+       </select>
+    
+    </p>
+        
+        <button type="submit">Update Data</button>
+    </form>
+</fieldset>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Window</title>
+</head>
+<body>
+    <h2>
+        {{hello}}
+    </h2>
+    <fieldset>
+        <legend>Data for User</legend>
+    <form action="/save" method="post">
+        <p>
+        <label for="">User Name:</label>
+        <input type="text" name="name_user" id="">
+        </p>
+        <p>
+        <label for="">Last Name</label>
+        <input type="text" name="last_user" id="">
+        </p>
+        <p>
+        <label for="">User</label>
+        <input type="text" name="user" id="">
+</p>
+    <p>
+        <label for="">User Type</label>
+        <input list="type_user" name="type_user">
+        <datalist id="type_user">
+            <option value="Admin">[Admin User]</option>
+            <option value="Guest">[User Guest]</option>
+            <option value="Sales">[Sales User]</option>
+        </datalist>
+    
+    </p>
+        
+        <button type="submit">Save Data</button>
+    </form>
+</fieldset>
+    <div>
+        {{error}}
+    </div>
+</body>
+</html>
