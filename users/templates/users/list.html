@@ -1,21 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Window</title>
-</head>
+{% extends './users/base.html' %}
+    
+{% block contenido %}
+
+{%include './users/slider_menu.html '%}
+{% block menu_slider %}
+
+{% endblock %}
+<title>List Window</title>
+
+<div class="site-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-8 mb-5">
 <body>
     <h2>
         {{hello}}
     </h2>
-    <h3>{{result}}</h3>
-    <table width="100%" border="1">
-        <tr>
-            <th>
+    
+    <fieldset>
+        <legend>{{result}}</legend>
+    <table style="font-size: 15px; text-align: center; margin: 45px; text-align: center; width: 680px; text-align: left; border-collapse: collapse;">
+        <tr style="padding: 8px;     background: #b9c9fe;
+        border-top: 4px solid #aabcfe;    border-bottom: 1px solid #fff; color: #039;">
+            <th >
                 Name
             </th>
-            <th>
+            <th >
                 Last Name
             </th>
             <th>
@@ -30,16 +40,28 @@
         </tr>
         {% for userdata in info %}
         <tr>
-            <td>{{ userdata.1 }}</td>
-            <td>{{ userdata.2 }}</td>
-            <td>{{ userdata.3 }}</td>
-            <td>{{ userdata.5 }}</td>
-            <td colspan="2">
+            <td style="padding: 8px;     background: #e8edff;     border-bottom: 1px solid #fff;
+            color: #669;    border-top: 1px solid transparent;">{{ userdata.1 }}</td>
+            <td style="padding: 8px;     background: #e8edff;     border-bottom: 1px solid #fff;
+            color: #669;    border-top: 1px solid transparent;">{{ userdata.2 }}</td>
+            <td style="padding: 8px;     background: #e8edff;     border-bottom: 1px solid #fff;
+            color: #669;    border-top: 1px solid transparent;">{{ userdata.3 }}</td>
+            <td style="padding: 8px;     background: #e8edff;     border-bottom: 1px solid #fff;
+            color: #669;    border-top: 1px solid transparent;">{{ userdata.5 }}</td>
+            <td colspan="2" style="padding: 8px;     background: #e8edff;     border-bottom: 1px solid #fff;
+            color: #669;    border-top: 1px solid transparent;">
                 <p><a href="{{url_for('update',id=userdata.0) }}">Update</a> &nbsp;
             <a href="{{url_for('delete',id=userdata.0)}}" onclick="alert('Do you want to delete the current record?')">Delete</a></p></td>
 
         </tr>
         {% endfor %}
     </table>
-</body>
-</html>
+    </fieldset>
+    <div>
+        {{error}}
+    </div>
+          </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
