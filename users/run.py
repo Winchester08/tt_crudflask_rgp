@@ -22,7 +22,8 @@ def begin():
 @application.route('/create')
 def create():
     message="Create Window"
-    return render_template('users/create.html', hello=message)
+    tech="CRUD in Flask & MySQL"
+    return render_template('users/create.html', hello=message, more=tech)
 
 @application.route('/save', methods=['POST', 'GET'])
 def save():
@@ -46,20 +47,22 @@ def save():
 def list():
     message="List Window"
     result="Data Results"
+    tech="CRUD in Flask & MySQL"
     data = mysql.connection.cursor()
     data.execute("Select * from admin_users order by lastname")
     info=data.fetchall()
     data.close()
-    return render_template('users/list.html', info=info, hello=message, result=result)
+    return render_template('users/list.html', info=info, hello=message, result=result,  more=tech) 
 
 @application.route('/update/<id>/')
 def update(id):
     message="Update Window"
+    tech="CRUD in Flask & MySQL"
     edit=mysql.connection.cursor()
     edit.execute("Select * from admin_users where id=%s",(id,))
     d=edit.fetchall()
 
-    return render_template('users/update.html', hello=message, info=d[0])
+    return render_template('users/update.html', hello=message, info=d[0],  more=tech)
 
 @application.route('/delete/<string:id>/')
 def delete(id):
@@ -79,9 +82,6 @@ def update_action(id):
     edit.execute("UPDATE admin_users set name=%s, lastname=%s, username=%s, user_type=%s where id=%s" ,(nu,lnu,user,tu,id))
     mysql.connection.commit()
     return redirect(url_for('list'))
-    
-
-    return ("Data modified succesfully")
 
 if __name__ == '__main__':
     application.run(debug=True, port=6500)

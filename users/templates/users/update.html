@@ -1,16 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Window</title>
-</head>
+{% extends './users/base.html' %}
+{%include './users/slider_menu.html '%}    
+
+{% block contenido %}
+
+{% block menu_slider %}
+
+{% endblock %}
+
+<title>Updating Data</title>
 <body>
+    
+
+<div class="site-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-8 mb-5">
+
     <h2>
         {{hello}}
     </h2>
+    
     <fieldset>
-        <legend>Data for User</legend>
+        
+        <table style="width: 800px; border-bottom: solid 2px black;" >
+            <tr><td>
     <form action="/update_action/{{info.0}}" method="post">
         <p>
         <label for="">User Name:</label>
@@ -36,8 +49,14 @@
     
     </p>
         
-        <button type="submit">Update Data</button>
+        <button type="submit" class="btn btn-primary">Update Data</button>
     </form>
+</td></tr>
+</table>
 </fieldset>
+</div> 
+</div> 
+</div> 
+</div> 
 </body>
-</html>
+{% endblock %}
