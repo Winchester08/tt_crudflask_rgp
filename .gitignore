@@ -1,0 +1,5 @@
+#carpeta del entorno virtual no es necesario cargarla
+/.virtual
+
+#archivo de requirements
+/requirements.txt
