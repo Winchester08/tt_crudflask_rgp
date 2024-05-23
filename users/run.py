@@ -38,11 +38,13 @@ def save():
         save.execute('''INSERT INTO admin_users(name, lastname, username, password, user_type)
                      VALUES(%s, %s, %s, %s, %s)''',(n,ln,u,p,tu))
         mysql.connection.commit()
+        save.close()
         return redirect(url_for('list'))
+    
     else:
         error_message='There is an error saving'
         return render_template('users/create.html',error=error_message)
-
+        
 @application.route('/list')
 def list():
     message="List Window"
@@ -61,16 +63,17 @@ def update(id):
     edit=mysql.connection.cursor()
     edit.execute("Select * from admin_users where id=%s",(id,))
     d=edit.fetchall()
-
+    edit.close()
     return render_template('users/update.html', hello=message, info=d[0],  more=tech)
 
-@application.route('/delete/<string:id>/')
+@application.route('/delete/<int:id>/')
 def delete(id):
     message="Delete Window"
     delete = mysql.connection.cursor()
     delete.execute("Delete from admin_users where id=%s",(id,))
     mysql.connection.commit()
     return redirect(url_for('list'))
+    delete.close()
 
 @application.route('/update_action/<int:id>', methods=['POST'])
 def update_action(id):
@@ -81,6 +84,7 @@ def update_action(id):
     edit = mysql.connection.cursor()
     edit.execute("UPDATE admin_users set name=%s, lastname=%s, username=%s, user_type=%s where id=%s" ,(nu,lnu,user,tu,id))
     mysql.connection.commit()
+    edit.close()
     return redirect(url_for('list'))
 
 if __name__ == '__main__':
